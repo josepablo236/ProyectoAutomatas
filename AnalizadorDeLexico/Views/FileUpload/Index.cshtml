@@ -1,0 +1,41 @@
+﻿<h2>SUBIR EL ARCHIVO .TXT</h2>
+@model List<string>
+<!--Form:
+Index = Es el metodo al que vamos a llamar
+FileUpload = El controlador donde se encuentra el metodo Index
+FormMethod.Post = Tipo de metodo
+multipart/form-data  = tipo de objeto-->
+@using (Html.BeginForm("Index", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <!--Los datos que va a tener el formulario  -->
+    <label for="file">Upload File: </label>
+    <!--Lo que nos va a permitir subir los archivos -->
+    <input type="file" name="file" id="file" />
+    <br>
+    <br>
+    <!--Lo que nos va a permitir realizar la accion de subir el archivo -->
+    <input type="submit" value="Upload File" />
+    <br>
+    <br>
+    <!--Nos mostrara el estado de la carga, este viene desde el controlador FileUpload -->
+    @ViewBag.Message
+    <br>
+
+    <h2>FILES UPLOADED</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+            <th></th>
+        </tr>
+        @for (var i = 0; i <= Model.Count - 1; i++)
+        {
+            <tr>
+                <td>@Model[i].ToString() </td>
+                <td>    </td>
+                <td>@Html.ActionLink("Analizar", "Read", new { TxtName = @Model[i].ToString() }) </td>
+            </tr>
+        }
+    </table>
+}

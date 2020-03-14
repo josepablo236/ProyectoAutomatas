@@ -1,0 +1,34 @@
+﻿@model AnalizadorDeLexico.Models.MistakesListViewModel
+@{
+    ViewBag.Title = "Mistakes";
+}
+
+<h2>Se encontraron errores en el archivo</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Número de linea
+            </th>
+            <th>
+                Linea de error
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListMistakes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Line)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mistake)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

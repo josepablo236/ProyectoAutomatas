@@ -1,0 +1,67 @@
+﻿
+@model AnalizadorDeLexico.Models.ArbolViewModel
+@{
+    ViewBag.Title = "TableOfTree";
+}
+
+<h2>Arbol armado correctamente</h2>
+<div>
+    @Html.ActionLink("Mostrar Automata", "Automata", new { arbol = Model  })
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Valor
+            </th>
+            <th>
+                Es nulable
+            </th>
+            <th>
+                Es hoja
+            </th>
+            <th>
+                Numero de hoja
+            </th>
+            <th>
+                First
+            </th>
+            <th>
+                Last
+            </th>
+            <th>
+                Follow
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListNodes)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsNull)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EsHoja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.First)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Last)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Follow)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
